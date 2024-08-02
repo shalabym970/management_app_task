@@ -38,16 +38,17 @@ class MyApp extends StatelessWidget {
               debugShowCheckedModeBanner: false,
               defaultTransition: Transition.cupertino,
               theme: ThemeData(
-                  primaryColor: Colors.black,
-                  scaffoldBackgroundColor: Colors.white,
+                  primaryColor: AppColors.black,
+
+                  scaffoldBackgroundColor: AppColors.scaffoldBackground,
                   inputDecorationTheme: InputDecorationTheme(
                       focusedBorder: const UnderlineInputBorder(
                         borderSide: BorderSide(
-                            color: Colors
+                            color: AppColors
                                 .black), // Color of the underline when focused
                       ),
                       labelStyle: TextStyle(
-                          color: Colors.black,
+                          color: AppColors.black,
                           fontWeight: FontWeight.w600,
                           fontSize: 14.sp,
                           height: 2)),
@@ -68,11 +69,11 @@ class MyApp extends StatelessWidget {
                     labelMedium: TextStyle(color: AppColors.textColor),
                     labelSmall: TextStyle(color: AppColors.textColor),
                   ),
-                  fontFamily: 'Cairo',
+                  fontFamily: 'Urbanist',
                   appBarTheme: const AppBarTheme(
-                      iconTheme: IconThemeData(color: Colors.black),
-                      color: Colors.white,
-                      foregroundColor: Colors.black,
+                      iconTheme: IconThemeData(color: AppColors.black),
+                      color: AppColors.white,
+                      foregroundColor: AppColors.black,
                       systemOverlayStyle: SystemUiOverlayStyle(
                           statusBarIconBrightness: Brightness.dark,
                           statusBarBrightness: Brightness.light))));

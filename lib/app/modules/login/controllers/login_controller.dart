@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import '../../../helpers/validator.dart';
+import '../../../routes/app_routes.dart';
 
 class LoginController extends GetxController {
   final emailAndPasswordValidation = EmailAndPasswordValidation();
@@ -29,7 +30,7 @@ class LoginController extends GetxController {
     isFormValid.value = _email.isNotEmpty && _password.isNotEmpty;
   }
 
-  void login() {}
+  void login() => Get.toNamed(Routes.root);
 
   @override
   void onInit() {

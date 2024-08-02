@@ -13,7 +13,7 @@ class AppStrings {
   static const String continueWithGoogle = "Continue With Google";
   static const String continueWithFacebook = "Continue With Facebook";
   static const String continueWithApple = "Continue With Apple";
-  static const String projectSummary = "Continue With Apple";
+  static const String projectSummary = "Project Summary";
   static const String searchProject = " Search project here";
   static const String search = "Search";
   static const String projectInProgress = "Project In Progress";
@@ -24,4 +24,6 @@ class AppStrings {
   static const String calendar = "Calendar";
   static const String task = "Task";
   static const String schedule = "Schedule";
+  static const String category = "Category";
+  static const String profile = "Profile";
 }

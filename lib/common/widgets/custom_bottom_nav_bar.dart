@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
+
+import '../color_manager.dart';
 
 class CustomBottomNavigationBar extends StatefulWidget {
   final Color backgroundColor;
@@ -33,57 +36,97 @@ class CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 60,
-      color: widget.backgroundColor,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: widget.children.map((item) {
-          var color = item.color;
-          var icon = item.icon;
-
-          int index = widget.children.indexOf(item);
-          return GestureDetector(
-            onTap: () {
-              _changeIndex(index);
-            },
-            child: AnimatedContainer(
-              duration: const Duration(milliseconds: 200),
-              width: widget.currentIndex == index
-                  ? MediaQuery.of(context).size.width / widget.children.length +
-                      20
-                  : 50,
-              padding: EdgeInsets.symmetric(horizontal: 10.w),
-              margin: EdgeInsets.symmetric(vertical: 10.h),
-              alignment: Alignment.center,
-              decoration: BoxDecoration(
-                  color: widget.currentIndex == index
-                      ? color.withOpacity(0.2)
-                      : Colors.transparent,
-                  borderRadius: BorderRadius.circular(10)),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: <Widget>[
-                  Icon(
-                    icon,
-                    size: 24,
-                    color: widget.currentIndex == index
-                        ? color
-                        : color.withOpacity(0.5),
-                  ),
-                ],
+    return Stack(
+      alignment: Alignment.topCenter,
+      children: [
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: 20.w, ),
+          child: Container(
+            height: 88.h,
+            decoration: BoxDecoration(
+              color: widget.backgroundColor,
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(24.r),
+                topRight: Radius.circular(24.r),
               ),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey.withOpacity(0.3),
+                  spreadRadius: 4,
+                  blurRadius: 9,
+                  offset: const Offset(0, 3), // Offset for the shadow (x, y)
+                ),
+              ],
             ),
-          );
-        }).toList(),
+            child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Row(
+                    children: widget.children.sublist(0, 2).map((item) {
+                      int index = widget.children.indexOf(item);
+                      return GestureDetector(
+                        onTap: () {
+                          _changeIndex(index);
+                        },
+                        child: buildNavItem(item, index),
+                      );
+                    }).toList(),
+                  ),
+                  // Spacer
+                  // SizedBox(width: 50.w), // Adjust width as necessary
+                  Row(
+                    children: widget.children.sublist(2, 4).map((item) {
+                      int index = widget.children.indexOf(item);
+                      return GestureDetector(
+                        onTap: () {
+                          _changeIndex(index);
+                        },
+                        child: buildNavItem(item, index),
+                      );
+                    }).toList(),
+                  ),
+                ]),
+          ),
+        ),
+        Positioned(
+          top: -20.h, // Adjust this value to position the button correctly
+          child: FloatingActionButton(
+            onPressed: () {
+              // Handle button press
+            },
+            child: Icon(
+              Icons.add,
+              color: AppColors.white,
+            ),
+            backgroundColor: AppColors.black,
+            elevation: 2,
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget buildNavItem(CustomBottomNavigationItem item, int index) {
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 27.h),
+      alignment: Alignment.center,
+      child: SvgPicture.asset(
+        widget.currentIndex == index
+            ? item.enableSvgImage
+            : item.disableSvgImage,
+        width: 24.w,
+        height: 24.h,
       ),
     );
   }
 }
 
 class CustomBottomNavigationItem {
-  final IconData icon;
-  final Color color;
+  final String enableSvgImage;
+  final String disableSvgImage;
 
-  CustomBottomNavigationItem({required this.icon, required this.color});
+  CustomBottomNavigationItem({
+    required this.enableSvgImage,
+    required this.disableSvgImage,
+  });
 }

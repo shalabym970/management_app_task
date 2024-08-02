@@ -16,6 +16,7 @@ class LoginView extends GetView<LoginController> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        backgroundColor: AppColors.white,
         body: SingleChildScrollView(
           child: Padding(
             padding: EdgeInsets.symmetric(
@@ -42,7 +43,7 @@ class LoginView extends GetView<LoginController> {
                         fontWeight: FontWeight.w500),
                   ),
                   SizedBox(height: 40.h),
-                  CustomTextFormAuth(
+                  CustomTextForm(
                     hintText: AppStrings.enterEmail,
                     validator: (String? value) {},
                     keyboardType: TextInputType.emailAddress,
@@ -53,7 +54,7 @@ class LoginView extends GetView<LoginController> {
                     focusNode: controller.emailFocusNode,
                   ),
                   SizedBox(height: 14.h),
-                  Obx(() => CustomTextFormAuth(
+                  Obx(() => CustomTextForm(
                         hintText: AppStrings.enterPassword,
                         isHidden: controller.hiddenPass.value,
                         onHidden: () => controller.hiddenPass.value =

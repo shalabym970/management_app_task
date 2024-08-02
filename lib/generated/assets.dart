@@ -3,8 +3,29 @@ class Assets {
   Assets._();
 
   static const String fontsCairoRegular = 'assets/fonts/Cairo-Regular.ttf';
+  static const String iconsCalendar = 'assets/icons/Calendar.svg';
+  static const String iconsCalendarIcon = 'assets/icons/calendar_icon.svg';
+  static const String iconsCategory = 'assets/icons/category.svg';
+  static const String iconsClock = 'assets/icons/clock.svg';
+  static const String iconsCloseCircle = 'assets/icons/close-circle.svg';
+  static const String iconsFolder = 'assets/icons/Folder.svg';
+  static const String iconsFolderLight = 'assets/icons/Folder_light.svg';
+  static const String iconsMenu = 'assets/icons/menu.svg';
+  static const String iconsNotification = 'assets/icons/Notification.svg';
+  static const String iconsProfileIcon = 'assets/icons/profile_icon.svg';
+  static const String iconsSearchNormal = 'assets/icons/search-normal.svg';
+  static const String iconsVerify = 'assets/icons/verify.svg';
   static const String imagesApple = 'assets/images/Apple.svg';
   static const String imagesFacebook = 'assets/images/Facebook.svg';
   static const String imagesGoogle = 'assets/images/Google.svg';
+  static const String urbanistUrbanistBlack = 'assets/fonts/Urbanist/Urbanist-Black.ttf';
+  static const String urbanistUrbanistBold = 'assets/fonts/Urbanist/Urbanist-Bold.ttf';
+  static const String urbanistUrbanistExtraBold = 'assets/fonts/Urbanist/Urbanist-ExtraBold.ttf';
+  static const String urbanistUrbanistExtraLight = 'assets/fonts/Urbanist/Urbanist-ExtraLight.ttf';
+  static const String urbanistUrbanistLight = 'assets/fonts/Urbanist/Urbanist-Light.ttf';
+  static const String urbanistUrbanistMedium = 'assets/fonts/Urbanist/Urbanist-Medium.ttf';
+  static const String urbanistUrbanistRegular = 'assets/fonts/Urbanist/Urbanist-Regular.ttf';
+  static const String urbanistUrbanistSemiBold = 'assets/fonts/Urbanist/Urbanist-SemiBold.ttf';
+  static const String urbanistUrbanistThin = 'assets/fonts/Urbanist/Urbanist-Thin.ttf';
 
 }
