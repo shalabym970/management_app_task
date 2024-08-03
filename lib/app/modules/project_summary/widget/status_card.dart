@@ -22,9 +22,8 @@ class StatusCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      elevation: 4.0,
+      elevation: 10,
       child: Container(
-
         width: 100.w,
         height: 100.h,
         decoration: BoxDecoration(
@@ -34,9 +33,16 @@ class StatusCard extends StatelessWidget {
             end: Alignment.bottomRight,
           ),
           borderRadius: BorderRadius.circular(8.r),
+          boxShadow: [
+            BoxShadow(
+              color: secondColor, // Custom shadow color
+              spreadRadius: 0.5,
+              offset: const Offset(0, 3), // Shadow position
+            ),
+          ],
         ),
         child: Padding(
-          padding: EdgeInsets.symmetric(vertical: 16.h, horizontal: 16.w),
+          padding: EdgeInsets.symmetric(vertical: 12.h, horizontal: 16.w),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -47,7 +53,7 @@ class StatusCard extends StatelessWidget {
                     '$count',
                     style: TextStyle(
                       color: AppColors.white,
-                      fontSize: 24.sp,
+                      fontSize: 20.sp,
                       fontWeight: FontWeight.w700,
                     ),
                   ),
@@ -60,18 +66,16 @@ class StatusCard extends StatelessWidget {
               ),
               SizedBox(height: 8.h),
               Expanded(
-                child: Text(
-                  label,
-                  textAlign: TextAlign.left,
-                  style: TextStyle(
-                    fontSize: 10.sp,
-                    height: 1.3.h,
-                    fontWeight: FontWeight.w500,
-                    color: AppColors.white.withOpacity(0.8),
-                  ),
-                  maxLines: 2,
-                  overflow: TextOverflow.visible,
-                ),
+                child: Text(label,
+                    textAlign: TextAlign.left,
+                    style: TextStyle(
+                      fontSize: 10.sp,
+                      height: 1.3.h,
+                      fontWeight: FontWeight.w500,
+                      color: AppColors.white.withOpacity(0.8),
+                    ),
+                    maxLines: 2,
+                    overflow: TextOverflow.visible),
               ),
             ],
           ),

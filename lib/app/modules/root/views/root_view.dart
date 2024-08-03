@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:getx_mvc_templet/common/color_manager.dart';
-import '../../../../common/widgets/custom_bottom_nav_bar.dart';
+import '../widgets/custom_bottom_nav_bar.dart';
 import '../../../../generated/assets.dart';
 import '../controllers/root_controller.dart';
 import '../widgets/custom_appbar.dart';
