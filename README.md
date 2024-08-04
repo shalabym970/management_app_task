@@ -23,8 +23,6 @@ This Flutter project follows a clean architecture approach with separation of co
 This project uses the following key dependencies:
 
 - [get](https://pub.dev/packages/get): State management and routing.
-- [http](https://pub.dev/packages/http): HTTP requests and network operations.
-- [provider](https://pub.dev/packages/provider): State management and dependency injection.
 
 ### Development Setup
 
