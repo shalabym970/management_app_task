@@ -13,6 +13,9 @@ class AppStrings {
   static const String continueWithGoogle = "Continue With Google";
   static const String continueWithFacebook = "Continue With Facebook";
   static const String continueWithApple = "Continue With Apple";
+  static const String continue_ = "Continue";
+  static const String chooseDate = "Choose Date";
+
   static const String projectSummary = "Project Summary";
   static const String searchProject = " Search project here";
   static const String search = "Search";

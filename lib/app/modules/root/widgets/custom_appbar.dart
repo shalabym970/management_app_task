@@ -49,8 +49,6 @@ class CustomAppbar extends StatelessWidget {
             children: [
               SvgPicture.asset(
                 Assets.iconsNotification,
-                width: 40.w,
-                height: 40.h,
               ),
               Positioned(
                 top: 1.0,

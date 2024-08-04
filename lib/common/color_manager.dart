@@ -15,6 +15,7 @@ class AppColors {
   static const Color lightRed = Color(0xffE87777);
   static const Color darkGreen = Color(0xff3F8B8D);
   static const Color lightGreen = Color(0xff58B2B4);
+  static const Color checkBoxGreen = Color(0xff5ECEB3);
   static const Color darkBlue = Color(0xff3A9ADE);
   static const Color lightBlue = Color(0xff5EACE4);
   static const Color hintColor = Color(0xff96A0B5);

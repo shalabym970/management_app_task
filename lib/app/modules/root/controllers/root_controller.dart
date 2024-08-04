@@ -12,7 +12,7 @@ class RootController extends GetxController {
   List<Widget> pages = [
     Container(),
     const ProjectSummaryView(),
-    const CalendarView(),
+     CalendarView(),
     Container(),
   ];
   List<String> pagesTile = [
