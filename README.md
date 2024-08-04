@@ -32,8 +32,14 @@ To get started with this project:
 
 1. **Clone the repository**:
    ```sh
-   git clone <repository_url>
+   git clone (https://github.com/shalabym970/management_app_task)
    
-1. **Clone the repository**:
+2. **Navigate to the project directory**:
    ```sh
-   git clone <repository_url>
+   cd management_app_task
+3. **Install dependencies**:
+   ```sh
+   flutter pub get
+4. **Run the app**:
+   ```sh
+   flutter run
