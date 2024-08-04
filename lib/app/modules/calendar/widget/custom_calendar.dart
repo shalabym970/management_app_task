@@ -82,36 +82,46 @@ class CustomCalendar extends GetView<CalendarController> {
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 24.w),
                 child: Obx(() => TableCalendar(
-                    firstDay: DateTime.utc(2010, 10, 16),
-                    lastDay: DateTime.utc(2030, 3, 14),
-                    focusedDay: controller.focusedDay.value,
-                    daysOfWeekVisible: false,
-                    weekNumbersVisible: false,
-                    calendarStyle: CalendarStyle(
-                        defaultTextStyle: TextStyle(
-                          fontSize: 16.sp,
-                          fontWeight: FontWeight.w600,
-                          color: AppColors.textColor,
-                        ),
-                        selectedDecoration: const BoxDecoration(
-                          color: Color(0xff191D2B),
-                        ),
-                        todayDecoration: const BoxDecoration(
-                          color: Color(0xff191D2B),
-                          shape: BoxShape.circle,
-                        ),
-                        weekendTextStyle: TextStyle(
+                      firstDay: DateTime.utc(2010, 10, 16),
+                      lastDay: DateTime.utc(2030, 3, 14),
+                      focusedDay: controller.focusedDay.value,
+                      daysOfWeekVisible: false,
+                      weekNumbersVisible: false,
+                      calendarStyle: CalendarStyle(
+                          selectedTextStyle: TextStyle(
                             fontSize: 16.sp,
                             fontWeight: FontWeight.w600,
-                            color: AppColors.textColor)),
-                    headerStyle: HeaderStyle(
-                        titleTextStyle: TextStyle(
-                            fontSize: 16.sp, fontWeight: FontWeight.w600),
-                        titleCentered: true,
-                        formatButtonVisible: false),
-                    onPageChanged: (focusedDay) {
-                      controller.focusedDay.value = focusedDay;
-                    })),
+                            color: AppColors.white,
+                          ),
+                          defaultTextStyle: TextStyle(
+                            fontSize: 16.sp,
+                            fontWeight: FontWeight.w600,
+                            color: AppColors.textColor,
+                          ),
+                          selectedDecoration: const BoxDecoration(
+                            color: Color(0xff191D2B),
+                          ),
+                          todayDecoration: const BoxDecoration(
+                            color: Color(0xff191D2B),
+                            shape: BoxShape.circle,
+                          ),
+                          weekendTextStyle: TextStyle(
+                              fontSize: 16.sp,
+                              fontWeight: FontWeight.w600,
+                              color: AppColors.textColor)),
+                      headerStyle: HeaderStyle(
+                          titleTextStyle: TextStyle(
+                              fontSize: 16.sp, fontWeight: FontWeight.w600),
+                          titleCentered: true,
+                          formatButtonVisible: false),
+                      onPageChanged: (focusedDay) {
+                        controller.focusedDay.value = focusedDay;
+                      },
+                      onDaySelected: (selectedDay, focusedDay) {
+                        controller.selectedDay.value = selectedDay;
+                        controller.focusedDay.value = focusedDay;
+                      },
+                    )),
               ),
               Divider(
                 thickness: 1.5, // Line thickness
@@ -128,7 +138,7 @@ class CustomCalendar extends GetView<CalendarController> {
                   ),
                   buttonColor: AppColors.textColor,
                   onPressed: () {
-                    // Define what happens when the button is pressed
+                   Get.back();
                   },
                 ),
               ),

@@ -50,8 +50,8 @@ class ProjectSummaryView extends GetView<ProjectSummaryController> {
                       count: 24,
                       label: AppStrings.projectCompleted,
                       svgImage: Assets.iconsVerify,
-                      firstColor: AppColors.darkGreen.withOpacity(1),
-                      secondColor: AppColors.lightGreen.withOpacity(1),
+                      firstColor: AppColors.olive.withOpacity(1),
+                      secondColor: AppColors.checkBoxColor.withOpacity(1),
                     ),
                     StatusCard(
                       count: 5,
