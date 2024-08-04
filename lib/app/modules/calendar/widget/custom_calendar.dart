@@ -85,6 +85,8 @@ class CustomCalendar extends GetView<CalendarController> {
                       firstDay: DateTime.utc(2010, 10, 16),
                       lastDay: DateTime.utc(2030, 3, 14),
                       focusedDay: controller.focusedDay.value,
+                      selectedDayPredicate: (day) =>
+                          isSameDay(day, controller.selectedDay.value),
                       daysOfWeekVisible: false,
                       weekNumbersVisible: false,
                       calendarStyle: CalendarStyle(
@@ -99,8 +101,7 @@ class CustomCalendar extends GetView<CalendarController> {
                             color: AppColors.textColor,
                           ),
                           selectedDecoration: const BoxDecoration(
-                            color: Color(0xff191D2B),
-                          ),
+                              color: Color(0xff191D2B), shape: BoxShape.circle),
                           todayDecoration: const BoxDecoration(
                             color: Color(0xff191D2B),
                             shape: BoxShape.circle,
@@ -120,6 +121,8 @@ class CustomCalendar extends GetView<CalendarController> {
                       onDaySelected: (selectedDay, focusedDay) {
                         controller.selectedDay.value = selectedDay;
                         controller.focusedDay.value = focusedDay;
+                        controller.generateDaysInMonth(
+                            date: controller.selectedDay.value);
                       },
                     )),
               ),
@@ -138,7 +141,7 @@ class CustomCalendar extends GetView<CalendarController> {
                   ),
                   buttonColor: AppColors.textColor,
                   onPressed: () {
-                   Get.back();
+                    Get.back();
                   },
                 ),
               ),

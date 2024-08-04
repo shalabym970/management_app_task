@@ -1,26 +1,30 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
+import 'package:get/get_state_manager/src/simple/get_view.dart';
+import '../../controllers/calendar_controller.dart';
+import 'day_subsequent_list_item_widget.dart';
 
-import 'day_subsequent_container.dart';
-
-class DaySubsequentListWidget extends StatelessWidget {
+class DaySubsequentListWidget extends GetView<CalendarController> {
   const DaySubsequentListWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 68.h,
-      child: ListView(
-        scrollDirection: Axis.horizontal,
-        children: const [
-          DaySubsequentContainer(day: 'TUE', date: '13'),
-          DaySubsequentContainer(day: 'WED', date: '14'),
-          DaySubsequentContainer(day: 'THU', date: '15'),
-          DaySubsequentContainer(day: 'FRI', date: '16'),
-          DaySubsequentContainer(day: 'SAT', date: '17'),
-          DaySubsequentContainer(day: 'SUN', date: '18'),
-        ],
-      ),
+      height: 68.h, // Adjust the height as needed
+      child: Obx(() => ListView.builder(
+            scrollDirection: Axis.horizontal,
+            itemCount: controller.daysInMonth.length,
+            itemBuilder: (context, index) {
+              final day = controller.daysInMonth[index];
+              final isSelected =
+                  controller.isSameDay(day, controller.selectedDay.value);
+              return DaySubsequentListItem(
+                day: day,
+                isSelected: isSelected,
+              );
+            },
+          )),
     );
   }
 }

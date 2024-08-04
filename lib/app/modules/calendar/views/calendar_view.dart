@@ -8,7 +8,7 @@ import '../controllers/calendar_controller.dart';
 import '../widget/custom_calendar.dart';
 import '../widget/day_subsequent_list/day_subsequent_list_widget.dart';
 import '../widget/schedule/schedule.dart';
-import '../widget/tasks/task.dart';
+import '../widget/tasks/task_list_widget.dart';
 import 'package:intl/intl.dart' as intl;
 
 class CalendarView extends GetView<CalendarController> {
@@ -44,31 +44,37 @@ class CalendarView extends GetView<CalendarController> {
                 showCustomBottomSheet(context);
               },
             ),
-            const Spacer(), // Spacer to push the icons to the right
-            Container(
-              width: 32.w,
-              height: 32,
-              decoration: BoxDecoration(
-                border: Border.all(
-                  color: AppColors.borderColor,
-                  width: 1.5.w,
+            const Spacer(),
+            GestureDetector(
+              onTap: () => controller.selectPreviousDay(),
+              child: Container(
+                width: 32.w,
+                height: 32,
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    color: AppColors.borderColor,
+                    width: 1.5.w,
+                  ),
+                  borderRadius: BorderRadius.circular(8.r),
                 ),
-                borderRadius: BorderRadius.circular(8.r),
+                child: Icon(Icons.arrow_back_ios_rounded, size: 16.sp),
               ),
-              child: Icon(Icons.arrow_back_ios_rounded, size: 16.sp),
             ),
             SizedBox(width: 8.w),
-            Container(
-              width: 32.w,
-              height: 32,
-              decoration: BoxDecoration(
-                border: Border.all(
-                  color: AppColors.borderColor,
-                  width: 1.5.w,
+            GestureDetector(
+              onTap: () => controller.selectNextDay(),
+              child: Container(
+                width: 32.w,
+                height: 32,
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    color: AppColors.borderColor,
+                    width: 1.5.w,
+                  ),
+                  borderRadius: BorderRadius.circular(8.r),
                 ),
-                borderRadius: BorderRadius.circular(8.r),
+                child: Icon(Icons.arrow_forward_ios_outlined, size: 16.sp),
               ),
-              child: Icon(Icons.arrow_forward_ios_outlined, size: 16.sp),
             ),
           ],
         ),
@@ -105,7 +111,7 @@ class CalendarView extends GetView<CalendarController> {
           controller: controller.tabController,
           children: const [
             Schedule(),
-            Task(),
+            TaskListWidget(),
           ],
         ),
       ),

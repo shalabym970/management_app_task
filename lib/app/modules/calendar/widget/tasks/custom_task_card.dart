@@ -1,22 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../common/color_manager.dart';
+import '../../../../models/task_model.dart';
 
-class CustomCard extends StatefulWidget {
-  final String topText;
-  final String bottomText;
+class CustomTaskCard extends StatefulWidget {
+  final Task task;
 
-  const CustomCard({
+  const CustomTaskCard({
     super.key,
-    required this.topText,
-    required this.bottomText,
+    required this.task,
   });
 
   @override
-  State<CustomCard> createState() => _CustomCardState();
+  State<CustomTaskCard> createState() => _CustomTaskCardState();
 }
 
-class _CustomCardState extends State<CustomCard> {
+class _CustomTaskCardState extends State<CustomTaskCard> {
   bool _isChecked = true;
 
   @override
@@ -44,7 +43,7 @@ class _CustomCardState extends State<CustomCard> {
             children: [
               Expanded(
                 child: Text(
-                  widget.topText,
+                  widget.task.title,
                   style: TextStyle(
                       fontWeight: FontWeight.w500,
                       color: AppColors.textColor,
@@ -54,7 +53,7 @@ class _CustomCardState extends State<CustomCard> {
               SizedBox(height: 4.h), // Space between the texts
               Expanded(
                 child: Text(
-                  widget.bottomText,
+                  widget.task.date,
                   style: TextStyle(
                       color: AppColors.disableIconColor,
                       fontSize: 12.sp,
