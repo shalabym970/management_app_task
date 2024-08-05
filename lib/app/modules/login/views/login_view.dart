@@ -6,6 +6,7 @@ import 'package:getx_mvc_templet/common/color_manager.dart';
 import '../../../../common/strings.dart';
 import '../../../../common/widgets/custom_button.dart';
 import '../../../../generated/assets.dart';
+import '../../../helpers/change_statusbar_color.dart';
 import '../controllers/login_controller.dart';
 import '../../../../common/widgets/custom_text_form.dart';
 
@@ -14,6 +15,7 @@ class LoginView extends GetView<LoginController> {
 
   @override
   Widget build(BuildContext context) {
+    setStatusBarColor(AppColors.white);
     return SafeArea(
       child: Scaffold(
         backgroundColor: AppColors.white,

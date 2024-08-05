@@ -1,5 +1,6 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import '../../../../common/color_manager.dart';
 import '../widget/chart/bottom_titles.dart';
@@ -7,14 +8,15 @@ import '../widget/chart/custom_bar_chart_group_data.dart';
 
 class ProjectSummaryController extends GetxController {
   final searchController = TextEditingController();
+  final selectedGroupIndex = (-1).obs;
 
-  List<BarChartGroupData> get barGroups => [
-        customBarChartGroupData(toY: 60),
-        customBarChartGroupData(toY: 80),
-        customBarChartGroupData(toY: 40),
-        customBarChartGroupData(toY: 56),
-        customBarChartGroupData(toY: 70),
-        customBarChartGroupData(toY: 75),
+  List<int> get barGroups => [
+        60,
+        80,
+        40,
+        56,
+        70,
+        75,
       ];
 
   FlTitlesData get titlesData => const FlTitlesData(
@@ -38,25 +40,33 @@ class ProjectSummaryController extends GetxController {
       );
 
   BarTouchData get barTouchData => BarTouchData(
-        enabled: false,
+        touchCallback: (event, response) {
+          if (response?.spot != null && event.isInterestedForInteractions) {
+            selectedGroupIndex.value = response!.spot!.touchedBarGroupIndex;
+          }
+        },
         touchTooltipData: BarTouchTooltipData(
-          getTooltipColor: (group) => Colors.transparent,
-          tooltipPadding: EdgeInsets.zero,
-          tooltipMargin: 8,
+          getTooltipColor: (group) => AppColors.textColor,
+          tooltipPadding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 4.h),
+          tooltipMargin: 14.h,
+          tooltipRoundedRadius: 8.r,
+          fitInsideHorizontally: true,
           getTooltipItem: (
-            BarChartGroupData group,
-            int groupIndex,
-            BarChartRodData rod,
-            int rodIndex,
+            group,
+            groupIndex,
+            rod,
+            rodIndex,
           ) {
             return BarTooltipItem(
-              rod.toY.round().toString(),
-              const TextStyle(
-                color: AppColors.contentColorCyan,
-                fontWeight: FontWeight.bold,
-              ),
-            );
+                "${rod.toY.round()} %",
+                TextStyle(
+                  color: AppColors.white,
+                  fontSize: 16.sp,
+                  fontWeight: FontWeight.w700,
+                ),
+                children: []);
           },
         ),
       );
 }
+

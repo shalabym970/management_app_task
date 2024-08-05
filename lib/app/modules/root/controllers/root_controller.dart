@@ -6,13 +6,13 @@ import '../../../../common/strings.dart';
 import '../../../routes/app_routes.dart';
 
 class RootController extends GetxController {
-  final currentIndex = 0.obs;
+  final currentIndex = 1.obs;
   final notificationsCount = 0.obs;
 
   List<Widget> pages = [
     Container(),
     const ProjectSummaryView(),
-     CalendarView(),
+     const CalendarView(),
     Container(),
   ];
   List<String> pagesTile = [
@@ -26,7 +26,6 @@ class RootController extends GetxController {
 
   String get currentTitle => pagesTile[currentIndex.value];
 
-  /// change page in route
 
   Future<void> changePageInRoot(int index) async {
     currentIndex.value = index;
